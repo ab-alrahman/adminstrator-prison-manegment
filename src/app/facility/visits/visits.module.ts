@@ -5,9 +5,10 @@ import { VisitsController } from './visits.controller';
 import { Visit } from './entities/visit.entity';
 import { Prisoner } from '../prisoners/entities/prisoner.entity';
 import { Visitor } from '../visitors/entities/visitor.entity';
+import { UserModule } from 'src/app/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Visit, Prisoner, Visitor])],
+  imports: [TypeOrmModule.forFeature([Visit, Prisoner, Visitor]), UserModule],
   controllers: [VisitsController],
   providers: [VisitsService],
   exports: [VisitsService],

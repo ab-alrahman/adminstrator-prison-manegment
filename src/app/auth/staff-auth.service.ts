@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserAccount } from 'src/database/entities/user-account.entity';
+import { UserAccount } from '../facility/user-accounts/entities/user-account.entity';
 import { StaffLoginDto } from './dto/staff-login.dto';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
@@ -36,7 +36,7 @@ export class StaffAuthService {
     await this.userAccountRepo.save(account);
 
     const payload: JwtPayloadType = {
-      id: account.id.toString(),
+      id: account.userId.toString(),
       sub: account.staff?.fullName ?? account.username,
       userType: account.role,
     };
@@ -46,14 +46,14 @@ export class StaffAuthService {
     return {
       accessToken,
       user: {
-        id: account.id,
+        id: account.userId,
         username: account.username,
         role: account.role,
         isActive: account.isActive,
         lastLogin: account.lastLogin,
         staff: account.staff
           ? {
-              id: account.staff.id,
+              id: account.staff.staffId,
               fullName: account.staff.fullName,
               position: account.staff.position,
               status: account.staff.status,

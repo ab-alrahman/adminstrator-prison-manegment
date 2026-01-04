@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { StaffAuthService } from './staff-auth.service';
 import { StaffAuthController } from './staff-auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserAccount } from 'src/database/entities/user-account.entity';
+import { UserAccount } from '../facility/user-accounts/entities/user-account.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         secret: config.get<string>('JWT_SECRET'),
-        signOptions: { expiresIn: config.get<string>('JWT_EXPIRED') },
+        signOptions: { expiresIn: config.get<number>('JWT_EXPIRED') },
       }),
     }),
   ],

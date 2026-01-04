@@ -5,9 +5,10 @@ import { CrimeRecordsController } from './crime-records.controller';
 import { CrimeRecord } from './entities/crime-record.entity';
 import { Prisoner } from '../prisoners/entities/prisoner.entity';
 import { CaseEntity } from '../cases/entities/case.entity';
+import { UserModule } from 'src/app/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CrimeRecord, Prisoner, CaseEntity])],
+  imports: [TypeOrmModule.forFeature([CrimeRecord, Prisoner, CaseEntity]), UserModule],
   controllers: [CrimeRecordsController],
   providers: [CrimeRecordsService],
   exports: [CrimeRecordsService],

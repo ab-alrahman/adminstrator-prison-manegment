@@ -4,9 +4,10 @@ import { UserAccountsService } from './user-accounts.service';
 import { UserAccountsController } from './user-accounts.controller';
 import { UserAccount } from './entities/user-account.entity';
 import { Staff } from '../staff/entities/staff.entity';
+import { UserModule } from 'src/app/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserAccount, Staff])],
+  imports: [TypeOrmModule.forFeature([UserAccount, Staff]), UserModule],
   controllers: [UserAccountsController],
   providers: [UserAccountsService],
   exports: [UserAccountsService],
