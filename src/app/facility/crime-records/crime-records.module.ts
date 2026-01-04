@@ -8,7 +8,10 @@ import { CaseEntity } from '../cases/entities/case.entity';
 import { UserModule } from 'src/app/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CrimeRecord, Prisoner, CaseEntity]), UserModule],
+  imports: [
+    TypeOrmModule.forFeature([CrimeRecord, Prisoner, CaseEntity]),
+    UserModule,
+  ],
   controllers: [CrimeRecordsController],
   providers: [CrimeRecordsService],
   exports: [CrimeRecordsService],

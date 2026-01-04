@@ -8,7 +8,10 @@ import { Staff } from '../staff/entities/staff.entity';
 import { UserModule } from 'src/app/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([HealthRecord, Prisoner, Staff]), UserModule],
+  imports: [
+    TypeOrmModule.forFeature([HealthRecord, Prisoner, Staff]),
+    UserModule,
+  ],
   controllers: [HealthRecordsController],
   providers: [HealthRecordsService],
   exports: [HealthRecordsService],

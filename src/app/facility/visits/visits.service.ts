@@ -49,7 +49,10 @@ export class VisitsService {
     return visit;
   }
 
-  async update(visitId: number, updateVisitDto: UpdateVisitDto): Promise<Visit> {
+  async update(
+    visitId: number,
+    updateVisitDto: UpdateVisitDto,
+  ): Promise<Visit> {
     const visit = await this.findOne(visitId);
     const { prisonerId, visitorId, ...rest } = updateVisitDto;
 

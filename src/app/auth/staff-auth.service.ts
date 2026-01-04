@@ -27,7 +27,10 @@ export class StaffAuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const isPasswordValid = await bcrypt.compare(password, account.passwordHash);
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      account.passwordHash,
+    );
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
